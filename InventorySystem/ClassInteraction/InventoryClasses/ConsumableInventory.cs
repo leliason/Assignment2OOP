@@ -15,7 +15,6 @@ namespace ClassInteraction.InventoryClasses
         {
             UsesRemaining = uses;
         }
-
         public override bool RemoveItem(string itemname, int quantity)
         {
             if (quantity <= 0 || UsesRemaining <= 0)
@@ -25,9 +24,5 @@ namespace ClassInteraction.InventoryClasses
             UsesRemaining -= quantity;
             return true;
         }
-
-
-
-
     }
 }

@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassInteraction
+namespace InventoryLibrary
 {
-    public class Item
+    public class Inventory
     {
         public int ItemId { get; private set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public int TotalInventorySlots { get; set; }
 
         public enum ItemCategory
         {
@@ -21,6 +22,15 @@ namespace ClassInteraction
         }
         public ItemCategory Category { get; private set; }
         private List<String> ItemHistory;
+
+        public Inventory()
+        {
+            ItemId = 0;
+            Name = "Empty";
+            Description = "An empty slot";
+            TotalInventorySlots = 10;
+            ItemHistory = new List<String>();
+        }
 
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,6 +33,53 @@ namespace InventoryLibrary
             ItemHistory = new List<String>();
         }
 
+        public Inventory(int ID, string name, ItemCategory category, int slots)
+        {
+            ItemId = ID;
+            Name = name;
+            Description = "";
+            TotalInventorySlots = slots;
+            Category = category;
+            ItemHistory = new List<string>();
+        }
+
+
+        public virtual void AddItem(string itemname, int quantity)
+        {
+            if (quantity <= 0)
+            {
+                throw new ArgumentException("Quantity must be greater than 0");
+            }
+            ItemHistory.Add($"Added {quantity}x {itemname} on {DateTime.Now}");
+        }
+        public virtual bool RemoveItem(string itemname, int quantity)
+        {
+            if (quantity <= 0 || quantity > TotalInventorySlots)
+            {
+                return false;
+            }
+            ItemHistory.Add($"Removed {quantity}x {itemname} on {DateTime.Now}");
+            return true;
+        }
+
+        public List<string> RetrieveItemHistory()
+        {
+                return ItemHistory;
+        }
+
+        public override string ToString()
+        {
+            return $"Item ID: {ItemId}, Name: {Name}, Category: {Category}, Description: {Description}, Slots: {TotalInventorySlots}";
+        }
+        public void ClearInventory()
+        {
+            ItemHistory.Add($"Inventory cleared on {DateTime.Now}");
+        }
+
+        public void ClearInventory(string reason)
+        {
+            ItemHistory.Add($"Inventory cleared on {DateTime.Now}. Reason: {reason}");
+        }
     }
 }
 

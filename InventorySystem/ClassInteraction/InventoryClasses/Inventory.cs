@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InventoryLibrary
+namespace ClassInteraction
 {
     public class Inventory
     {
@@ -22,7 +22,7 @@ namespace InventoryLibrary
             Currency
         }
         public ItemCategory Category { get; private set; }
-        private List<String> ItemHistory;
+        private List<string> ItemHistory;
 
         public Inventory()
         {
@@ -30,7 +30,7 @@ namespace InventoryLibrary
             Name = "Empty";
             Description = "An empty slot";
             TotalInventorySlots = 10;
-            ItemHistory = new List<String>();
+            ItemHistory = new List<string>();
         }
 
         public Inventory(int ID, string name, ItemCategory category, int slots)
@@ -64,7 +64,7 @@ namespace InventoryLibrary
 
         public List<string> RetrieveItemHistory()
         {
-                return ItemHistory;
+            return ItemHistory;
         }
 
         public override string ToString()

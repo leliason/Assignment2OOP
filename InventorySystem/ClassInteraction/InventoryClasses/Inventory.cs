@@ -10,6 +10,7 @@ namespace ClassInteraction
 {
     public class Inventory
     {
+        public bool IsActive { get; set; }
         public int ItemId { get; private set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -31,6 +32,7 @@ namespace ClassInteraction
             Description = "An empty slot";
             TotalInventorySlots = 10;
             ItemHistory = new List<string>();
+            IsActive = true;
         }
 
         public Inventory(int ID, string name, ItemCategory category, int slots)
@@ -41,6 +43,7 @@ namespace ClassInteraction
             TotalInventorySlots = slots;
             Category = category;
             ItemHistory = new List<string>();
+            IsActive = true;
         }
 
 
